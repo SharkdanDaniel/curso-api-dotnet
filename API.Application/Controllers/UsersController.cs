@@ -1,5 +1,6 @@
 ﻿using API.Domain.Entities;
 using API.Domain.Interfaces.Services.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace API.Application.Controllers
         }
 
         // GET: api/<UsersController>
+        [Authorize("Bearer")]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
@@ -43,6 +45,7 @@ namespace API.Application.Controllers
         }
 
         // GET api/<UsersController>/5
+        [Authorize("Bearer")]
         [HttpGet]
         [Route("{id}", Name = "GetWithId")]
         public async Task<ActionResult> Get(Guid id)
@@ -64,6 +67,7 @@ namespace API.Application.Controllers
         }
 
         // POST api/<UsersController>
+        [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserEntity user)
         {
@@ -92,6 +96,7 @@ namespace API.Application.Controllers
         }
 
         // PUT api/<UsersController>/5
+        [Authorize("Bearer")]
         [HttpPut]
         //[HttpPut("{id}")]
         public async Task<ActionResult> Put([FromBody] UserEntity user)
@@ -121,6 +126,7 @@ namespace API.Application.Controllers
         }
 
         // DELETE api/<UsersController>/5
+        [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
